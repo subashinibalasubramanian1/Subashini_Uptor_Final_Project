@@ -1,0 +1,82 @@
+TITLE: Heart Disease Prediction
+------------------------------------
+In this Heart Disease Prediction Model, Based on patient's Medical attributes we perform analysis on patients
+whether they are having Heart Disease or not....
+
+Using Logistic Regression Algorithm
+------------------------------------
+One such supervised learning model that can be used is logistic regression that is used to model the probability of
+a binary outcome such as the presence or absence of heart disease—based on input features. In this
+article we will explore how Logistic regression to predict the likelihood of heart disease in patients.
+
+DATASET : framingham.csv
+---------
+The dataset is from an ongoing cardiovascular study on residents of the town of Framingham,
+Massachusetts. The classification goal is to predict whether the patient has 10-year risk of
+future coronary heart disease (CHD). The dataset provides the patients information.
+It includes over 4,000 records and 15 attributes.
+
+STEP 1 :importing Necessary Libraries
+--------
+For this we will be importing Pandas,matplotlib,seaborn,sklearn library in python
+
+STEP 2: Data Preparation
+--------
+2.1 Loading the dataset by using pd.read_csv
+
+2.2 Then Handle the MissingValues by using the below
+df.dropna(axis=0, inplace=True)  ======this removes any rows with missing values (NaN) from
+the dataframe
+df.TenYearCHD.value_counts()=========This prints the count of unique values in the TenYearCHD
+column which likely indicates whether a patient has heart disease.
+
+STEP 3 : Splitting the dataset into train and test sets
+---------
+Scaling is very important for many machine learning models,especially when the features have different
+units of magnitudes.
+
+Training set (70% of data,X_train and y_train)
+Test set (30% of data,X_test and y_test)
+random_state = 4 ensures the split is reproducible
+
+STEP 4 : Exploratory Data Analysis of Heart Disease Dataset
+---------
+In this section, we perform EDA on the heart disease dataset to understand
+and gain insights into the dataset before building a predictive model for heart disease.
+
+Ten Year’s CHD Record of all the patients available in the dataset:
+sns.countplot(x='TenYearCHD', data=disease_df, palette="BuGn_r"): This creates a count plot using Seaborn.
+It visualizes the distribution of the values in the TenYearCHD column showing how many individuals have
+heart disease (1) vs. how many don’t (0).
+
+STEP 5: Fitting Logistic Regression Model for Heart Disease Prediction
+----------
+model = LogisticRegression(): This creates an instance of the LogisticRegression model.
+
+model.fit(X_train, y_train): This trains the logistic regression model using the training data
+(X_train for features and y_train for the target).
+
+y_prediction = model.predict(X_test): This uses the trained logistic regression model to make predictions
+on the test set (X_test). The predicted values are stored in y_prediction.
+
+
+STEP 6: Evaluating Logistic Regression Model
+--------
+Accuracy of the model is calculated by the function
+accuracy_score(y_test,y_prediction)
+
+Confusion Matrix
+Confusion Matrix is a performance evaluation tool used to assess the accuracy of a classification model.
+It is used to evaluate the performance of our logistic regression model in predicting heart disease helping
+us understand how well the model distinguishes between positive and negative cases.
+
+cm = confusion_matrix(y_test, y_prediction): computes confusion matrix by comparing the actual values (y_test)
+with the predicted values (y_prediction). It returns a 2×2 matrix showing true positives, true negatives,
+false positives and false negatives.
+
+Heart Disease Prediction Using Unsupervised machine Learning
+---------------------------------------------------------------
+generally less effective for predicting heart disease compared to supervised learning methods, which use
+labeled data to train models to classify patients as having or not having heart disease.
+
+
